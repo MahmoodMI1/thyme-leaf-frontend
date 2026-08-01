@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Claude design bundle — reference only, not part of the build
+design1
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
