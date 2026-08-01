@@ -4,6 +4,19 @@
 // KEEP client-side: TYPES / typeLabel.
 import { request } from './auth-api';
 
+// The kitchen's course vocabulary. Order here is menu order.
+export const TYPES = [
+  { key: 'canapes', label: 'Canapés' },
+  { key: 'entrees', label: 'Entrées' },
+  { key: 'mains', label: 'Mains' },
+  { key: 'sides', label: 'Sides' },
+  { key: 'sweets', label: 'Sweets' },
+  { key: 'tea', label: 'Tea & drinks' },
+  { key: 'components', label: 'Components' }
+];
+
+export const typeLabel = (key) => (TYPES.find(t => t.key === key) || {}).label || 'Uncategorised';
+
 export function listDishes() {
   return request('/api/dishes');
 }
