@@ -108,7 +108,7 @@ export function UsersScreen() {
   if (state === 'failed') return <UnreachablePanel title="The staff accounts didn’t load" onRetry={load} />;
 
   return (
-    <div>
+    <div className="ht-users">
       <div style={{ fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--ht-olive)', marginBottom: 10 }}>
         Access
       </div>
@@ -226,14 +226,14 @@ export function UsersScreen() {
                 <div className="ht-acts">
                   <button
                     type="button"
-                    className="ht-sec"
+                    className="ht-sec ht-sec--muted"
                     onClick={() => { setResetFor(u); setPass1(''); setPass2(''); setResetError(null); }}
                   >
                     Set password
                   </button>
                   <button
                     type="button"
-                    className="ht-sec"
+                    className="ht-sec ht-sec--muted"
                     disabled={isYou}
                     title={isYou ? 'You can’t deactivate your own account' : undefined}
                     onClick={() => {

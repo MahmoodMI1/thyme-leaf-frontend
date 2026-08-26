@@ -157,9 +157,8 @@ export function FoodsScreen() {
                 <button type="button" className="ht-sec" onClick={() => { setEditing(f); setFormOpen(true); }}>Edit</button>
                 <button
                   type="button"
-                  className="ht-sec"
+                  className="ht-sec ht-sec--muted"
                   onClick={() => setPending(f)}
-                  style={{ borderWidth: 1, borderColor: 'var(--ht-hairline)', color: 'var(--ht-body)', fontWeight: 600 }}
                 >
                   Delete
                 </button>

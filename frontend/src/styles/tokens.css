@@ -111,6 +111,28 @@ input::placeholder { color: var(--ht-placeholder); }
   .ht-sec { min-height: 36px; }
 }
 
+/* Row-level secondary action: quieter than .ht-sec, which is the olive
+   outline used for primary-adjacent controls. */
+.ht-sec--muted {
+  border: 1px solid var(--ht-hairline);
+  color: var(--ht-body);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 14px;
+}
+
+.ht-sec--muted:hover:not(:disabled) {
+  border-color: var(--ht-plum);
+  color: var(--ht-plum);
+  background: none;
+}
+
+.ht-sec--muted:disabled {
+  border-color: #EFEADF;
+  color: #C3BBA8;
+  opacity: 1;
+}
+
 /* Primary action: plum pill. */
 .ht-pri {
   border-radius: var(--ht-radius-pill);
@@ -157,7 +179,7 @@ input::placeholder { color: var(--ht-placeholder); }
 .ht-row { display: flex; flex-direction: column; gap: 12px; }
 .ht-cells { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
 .ht-thead { display: none; }
-.ht-acts { display: flex; gap: 8px; }
+.ht-acts { display: flex; flex-wrap: wrap; gap: 8px; }
 .ht-formgrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .ht-toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 18px; }
 
@@ -175,11 +197,19 @@ input::placeholder { color: var(--ht-placeholder); }
   }
   .ht-lab { display: none; }
   .ht-thead { display: grid; }
-  .ht-acts { justify-content: flex-end; }
+  .ht-acts { justify-content: flex-end; flex-wrap: nowrap; }
   .ht-formgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; }
   .ht-f-name { grid-column: 1 / -1; }
   .ht-toolbar { flex-direction: row; align-items: center; }
   .ht-search { max-width: 320px; }
+}
+
+/* ── Staff accounts: three cells and a wider action column ────────────── */
+
+@media (min-width: 700px) {
+  .ht-users .ht-row { grid-template-columns: minmax(0, 1.6fr) minmax(0, 2.2fr) 210px; gap: 16px; }
+  .ht-users .ht-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .ht-users .ht-formgrid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
 }
 
 /* ── Dish builder ─────────────────────────────────────────────────────── */

@@ -453,9 +453,9 @@ export function BuilderScreen() {
 
                 <button
                   type="button"
-                  className="ht-sec"
+                  className="ht-sec ht-sec--muted"
                   onClick={() => { setLines(prev => prev.filter((_, n) => n !== i)); setError(null); setSaved(null); }}
-                  style={{ borderWidth: 1, borderColor: 'var(--ht-hairline)', color: 'var(--ht-body)', fontWeight: 600, justifySelf: 'end' }}
+                  style={{ justifySelf: 'end' }}
                 >
                   Remove
                 </button>
