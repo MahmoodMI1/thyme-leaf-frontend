@@ -118,7 +118,7 @@ input::placeholder { color: var(--ht-placeholder); }
   color: var(--ht-body);
   font-size: 13px;
   font-weight: 600;
-  padding: 0 14px;
+  padding: 0 20px;
 }
 
 .ht-sec--muted:hover:not(:disabled) {
@@ -180,6 +180,7 @@ input::placeholder { color: var(--ht-placeholder); }
 .ht-cells { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
 .ht-thead { display: none; }
 .ht-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.ht-acts > * { flex: 0 0 auto; white-space: nowrap; }
 .ht-formgrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .ht-toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 18px; }
 
@@ -207,7 +208,7 @@ input::placeholder { color: var(--ht-placeholder); }
 /* ── Staff accounts: three cells and a wider action column ────────────── */
 
 @media (min-width: 700px) {
-  .ht-users .ht-row { grid-template-columns: minmax(0, 1.6fr) minmax(0, 2.2fr) 210px; gap: 16px; }
+  .ht-users .ht-row { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.9fr) 280px; gap: 16px; }
   .ht-users .ht-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .ht-users .ht-formgrid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
 }
