@@ -8,6 +8,7 @@ import { FoodsScreen } from './screens/foods/FoodsScreen.jsx';
 import { MenuScreen } from './screens/dishes/MenuScreen.jsx';
 import { BuilderScreen } from './screens/dishes/BuilderScreen.jsx';
 import { UsersScreen } from './screens/users/UsersScreen.jsx';
+import { LegalScreen } from './screens/LegalScreen.jsx';
 
 const ALL = ['admin', 'chef', 'staff'];
 const KITCHEN = ['admin', 'chef'];
@@ -23,6 +24,8 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginScreen />} />
+      {/* Readable before signing in — a privacy notice behind a login is no notice. */}
+      <Route path="/legal" element={<LegalScreen />} />
 
       <Route element={<AppShell />}>
         <Route index element={<RequireRole roles={ALL}><Dashboard /></RequireRole>} />

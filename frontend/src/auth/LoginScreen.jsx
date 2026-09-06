@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useSession } from './useSession.js';
 import { PASSWORD_MIN_LENGTH } from '../api/users-api.js';
+import { SiteFooter } from '../components/SiteFooter.jsx';
 
 const MISMATCH = 'That username and password don’t match. Please try again.';
 
@@ -219,6 +220,8 @@ export function LoginScreen() {
               Ask for access
             </button>.
           </p>
+
+          <SiteFooter compact />
         </div>
 
       </div>

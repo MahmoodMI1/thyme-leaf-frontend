@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useSession } from '../auth/useSession.js';
 import { allowed } from '../lib/nav.js';
 import { RolePill } from './RolePill.jsx';
+import { SiteFooter } from './SiteFooter.jsx';
 
 const linkStyle = (current) => ({
   padding: '8px 11px', borderRadius: 'var(--ht-radius-pill)', fontSize: '13.5px',
@@ -72,6 +73,8 @@ export function AppShell() {
       <main key={location.pathname} className="ht-page">
         <Outlet />
       </main>
+
+      <SiteFooter />
     </div>
   );
 }
