@@ -9,9 +9,8 @@
   publish = "dist"
 
 [build.environment]
-  # Match the Node the lock file was written with. Node 22 ships npm 10, which
-  # rejects the optional-dependency stubs npm 11 writes into package-lock.json
-  # ("npm error Invalid Version:"). Node 24 ships npm 11 and reads them fine.
+  # Vite 8 needs Node 20.19+ / 22.12+. Pinned to match the machine the lock
+  # file is generated on, so a build here is the same build as a build there.
   NODE_VERSION = "24"
 
 # The production equivalent of the Vite dev proxy in vite.config.js.
