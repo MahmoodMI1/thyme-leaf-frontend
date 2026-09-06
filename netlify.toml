@@ -1,0 +1,35 @@
+# Netlify deployment for the Holiday Thyme kitchen tools.
+#
+# The app is in frontend/, not at the repo root, so `base` moves the build
+# there and `publish` is resolved relative to it.
+
+[build]
+  base    = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 needs Node 20.19+ / 22.12+. Netlify's per-site default drifts, so
+  # pin it rather than discover it in a failed build.
+  NODE_VERSION = "22"
+
+# The production equivalent of the Vite dev proxy in vite.config.js.
+#
+# Every API call in the app is a relative /api/... path. Forwarding them here
+# means the browser only ever talks to one origin, so the HttpOnly
+# SameSite=Strict session cookie behaves exactly as it does locally — no CORS,
+# no SameSite=None, no third-party cookie. Change the host below when the
+# kitchen moves to its own domain.
+[[redirects]]
+  from   = "/api/*"
+  to     = "https://192.34.58.218.sslip.io/api/:splat"
+  status = 200
+  force  = true
+
+# Client-side routing: /menu, /users, /builder?edit=3 are React Router paths
+# with no file behind them. Hand anything unmatched to the SPA so a reload or a
+# pasted link resolves. Must stay last — it matches everything.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
