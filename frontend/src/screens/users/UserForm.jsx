@@ -2,12 +2,18 @@ import { useEffect, useState } from 'react';
 import { createUser, PASSWORD_MIN_LENGTH, ROLES, suggestPassword } from '../../api/users-api.js';
 import { FormError } from '../../components/FormField.jsx';
 
-const fieldStyle = {
-  flex: '1 1 240px', minWidth: 0, minHeight: 44, padding: '10px 15px',
+const baseField = {
+  minHeight: 48, padding: '12px 15px',
   fontFamily: 'var(--ht-body-font)', fontSize: 15, color: 'var(--ht-ink)',
   background: 'var(--ht-field)', border: '1px solid var(--ht-hairline)',
   borderRadius: 'var(--ht-radius-field)', outline: 'none'
 };
+
+// Sits alone in a column label — no flex, or flex-basis becomes its height.
+const nameFieldStyle = { ...baseField, width: '100%' };
+
+// Shares a row with the New button; bold so a read-out password is legible.
+const passFieldStyle = { ...baseField, flex: 1, minWidth: 0, fontWeight: 700 };
 
 const labelStyle = {
   fontSize: '12.5px', fontWeight: 600, letterSpacing: '0.06em',
@@ -51,7 +57,7 @@ export function UserForm({ onClose, onCreated }) {
     }
   };
 
-  const styleFor = (key) => (fields[key] ? { ...fieldStyle, borderColor: 'var(--ht-plum)' } : fieldStyle);
+  const styleFor = (key, base) => (fields[key] ? { ...base, borderColor: 'var(--ht-plum)' } : base);
   const fieldError = (key) => fields[key]
     ? <span role="alert" style={{ fontSize: 13, color: 'var(--ht-error-text)' }}>{fields[key]}</span>
     : null;
@@ -86,8 +92,8 @@ export function UserForm({ onClose, onCreated }) {
             <span style={labelStyle}>Username</span>
             <input
               type="text" name="username" value={username}
-              onChange={(e) => { setUsername(e.target.value.slice(0, 40)); setFields({}); }}
-              autoComplete="off" placeholder="marisol" style={styleFor('username')}
+              onChange={(e) => { setUsername(e.target.value.replace(/[^a-zA-Z0-9._-]/g, '').slice(0, 24)); setFields({}); }}
+              autoComplete="off" placeholder="marisol" style={styleFor('username', nameFieldStyle)}
             />
             {fieldError('username')}
           </label>
@@ -97,8 +103,8 @@ export function UserForm({ onClose, onCreated }) {
             <span style={{ display: 'flex', gap: 8 }}>
               <input
                 type="text" name="password" value={password}
-                onChange={(e) => { setPassword(e.target.value); setFields({}); }}
-                autoComplete="off" style={styleFor('password')}
+                onChange={(e) => { setPassword(e.target.value.slice(0, 32)); setFields({}); }}
+                autoComplete="off" style={styleFor('password', passFieldStyle)}
               />
               <button type="button" className="ht-sec" onClick={() => setPassword(suggestPassword())}>New</button>
             </span>
