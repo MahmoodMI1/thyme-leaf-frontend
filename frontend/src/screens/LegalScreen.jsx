@@ -6,12 +6,12 @@ import { COPYRIGHT_YEAR, SiteFooter } from '../components/SiteFooter.jsx';
 /**
  * Facts these notices rest on — change them here, not in the prose.
  *
- * Set CONTACT_EMAIL before handoff. Until then, questions route to the
- * kitchen manager, which is how the design already handles every other
- * account matter.
+ * CONTACT_EMAIL is the developer's — the agreement makes him the host and
+ * the point of contact for how the tool handles information. Set it to null
+ * and questions route to the kitchen manager instead.
  */
 const LAST_UPDATED = 'September 6, 2026';
-const CONTACT_EMAIL = null;
+const CONTACT_EMAIL = 'mahmoodidelbi2@gmail.com';
 const OPERATOR = 'Holiday Thyme';
 const DEVELOPER = 'Mahmood Idelbi';
 const SESSION_HOURS = 8;
