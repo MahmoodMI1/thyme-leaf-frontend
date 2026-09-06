@@ -9,9 +9,10 @@
   publish = "dist"
 
 [build.environment]
-  # Vite 8 needs Node 20.19+ / 22.12+. Netlify's per-site default drifts, so
-  # pin it rather than discover it in a failed build.
-  NODE_VERSION = "22"
+  # Match the Node the lock file was written with. Node 22 ships npm 10, which
+  # rejects the optional-dependency stubs npm 11 writes into package-lock.json
+  # ("npm error Invalid Version:"). Node 24 ships npm 11 and reads them fine.
+  NODE_VERSION = "24"
 
 # The production equivalent of the Vite dev proxy in vite.config.js.
 #
